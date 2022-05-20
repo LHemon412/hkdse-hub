@@ -62,6 +62,7 @@ class IonicCompound {
 
     if (anionName == "oxide" || anionName == "hydroxide") {
       if (cationName == "barium") return true;
+      else if (cationName == "silver") return false;
       else if (this.cation.charge == 1) return true;
       else return false;
     }
