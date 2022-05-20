@@ -140,7 +140,7 @@ function userAnswer(ans) {
   $("#btnAnswer").css("display", "none");
   $("#btnAnswer").css("opacity", 0);
   $("#btnNext").css("display", "grid");
-  $("#btnNext").css("opacity", 1);
+  $("#btnNext").animate({opacity: 1}, 800);
   $("#game-card").removeClass("bg-light");
   if (answer == ans) {
     $("#game-card").addClass("bg-success-pale", 800);
