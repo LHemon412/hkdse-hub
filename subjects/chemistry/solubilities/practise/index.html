@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="hkdse, chemistry, ict">
+    <title>HKDSE Hub - Chemistry / Solubilities / Practise</title>
+
+    <!-- Bootstrap v5.0 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- jQuery -->
+    <script src="/hkdse-hub/scripts/jquery-3.6.0.slim.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="/hkdse-hub/scripts/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="/hkdse-hub/css/jquery-ui.min.css">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/hkdse-hub/css/master.css">
+
+    <!-- KATEX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/mhchem.min.js" integrity="sha384-UEY9IRPkV+TTTY7nK1wSrfhWPDJy9wr4PmYg3DLPcN5F4NDlIwGZkWtWveKR/45c"  crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+    onload="renderKATEX()"></script>
+
+    <!-- Starting script -->
+    <script type="text/javascript">
+      $(document).ready(() => {
+        $("#navbar").load('/hkdse-hub/navbar.html', () => {
+          $("#navbar-subjects").addClass("active");
+          $("#subject-chemistry").addClass("active");
+          $(".mask").css("display", "none");
+        });
+        initialize();
+        genQuestion();
+      });
+
+      function renderKATEX() {
+        renderMathInElement(document.body, {"delimiters": [
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false},
+        ]});
+      }
+    </script>
+
+    <!-- Practise Game Script -->
+    <script src="game.js" charset="utf-8"></script>
+  </head>
+  <body class="bg-dark h-100">
+    <div class="mask">
+      <div class="spinner-border text-white" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <div id="navbar"></div>
+
+    <div class="container-fluid px-0" style="overflow: hidden">
+      <div class="jumbotron text-white">
+        <div class="bg-cover" style="background-image: url('/hkdse-hub/assets/chemistry.jpg');"></div>
+        <div class="bg-text">
+          <h1 class="text-white text-center fw-bold pt-5 pb-3 px-2">Chemistry</h1>
+          <h4 class="text-white text-center pt-3 pb-5 px-2">Solubilities Practise</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-5">
+      <a href="../">
+        <div class="card text-dark bg-light mb-3">
+          <div class="card-body">
+            <h5>... Back to Cheatsheet</h5>
+          </div>
+        </div>
+      </a>
+
+      <div class="card text-dark bg-light mb-3" id="game-card">
+        <div class="card-header"><h5>Practise</h5></div>
+        <div class="card-body" id="game-panel">
+          <h4 id="compoundFormula" class="text-center" style="white-space: pre;"> </h4>
+          <h5 id="compoundName" class="text-center text-secondary text-capitalize" style="white-space: pre;"> </h5>
+          <div class="d-flex">
+
+          </div>
+          <h4 id="gameResult" class="text-center fw-bold py-3" style="white-space: pre;"> </h4>
+        </div>
+        <div class="btn-group mb-3 mx-2" role="group" id="btnAnswer">
+          <button type="button" class="btn btn-success" onclick="userAnswer('soluble');">Soluble</button>
+          <button type="button" class="btn btn-danger" onclick="userAnswer('insoluble')">Insoluble</button>
+        </div>
+        <div class="mb-3 mx-2" style="display: none" id="btnNext">
+          <button type="button" class="btn btn-primary " onclick="genQuestion()">Next</button>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </body>
+</html>

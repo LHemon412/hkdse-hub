@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="hkdse, chemistry, ict">
+    <title>HKDSE Hub - Home</title>
+
+    <!-- Bootstrap v5.0 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- jQuery -->
+    <script src="/hkdse-hub/scripts/jquery-3.6.0.slim.min.js"></script>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="../css/master.css">
+
+    <!-- Starting script -->
+    <script type="text/javascript">
+      $(document).ready(() => {
+        $("#navbar").load('/hkdse-hub/navbar.html', () => {
+          $("#navbar-home").addClass("active");
+          $(".mask").css("display", "none");
+        });
+      });
+    </script>
+  </head>
+  <body class="bg-dark h-100">
+    <div class="mask">
+      <div class="spinner-border text-white" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <div id="navbar"></div>
+
+    <div class="container-fluid px-0" style="overflow: hidden">
+      <div class="jumbotron text-white">
+        <div class="bg-cover" style="background-image: url('/hkdse-hub/assets/HKDSE.jpg');"></div>
+        <div class="bg-text">
+          <h1 class="text-white text-center fw-bold pt-5 pb-3 px-2">HKDSE Hub</h1>
+          <h4 class="text-white text-center pt-3 pb-5 px-2">A website which helps with your HKDSE studies</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-5">
+      <p class="text-light">Welcome to HKDSE Hub, a website with several studying tools to help with some subjects in the HKDSE.</p>
+      <p class="text-light">You will find different subjects and tools in the navigation bar.</p>
+      <p class="text-light">Currently supported subjects: Chemistry, ICT</p>
+    </div>
+  </body>
+</html>

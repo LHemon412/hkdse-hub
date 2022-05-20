@@ -1,0 +1,47 @@
+* {
+  user-select: none;
+}
+
+.mask {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: #212529;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  /* filter: blur(3px) opacity(25%); */
+  /* -webkit-filter: blur(3px) opacity(50%); */
+  z-index: -1;
+}
+
+.bg-text {
+  background-color: rgba(0,0,0);
+  background-color: rgba(0,0,0,0.75);
+}
+
+.jumbotron {
+  position: relative;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.bg-success-pale {
+  background-color: #9bffd1;
+}
+
+.bg-danger-pale {
+  background-color: #f097a0;
+}
