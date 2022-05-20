@@ -142,11 +142,11 @@ function userAnswer(ans) {
   $("#btnNext").css("opacity", 1);
   $("#game-card").removeClass("bg-light");
   if (answer == ans) {
-    $("#game-card").addClass("bg-success-pale", 400);
+    $("#game-card").addClass("bg-success-pale", 800);
     $("#gameResult").text("Correct!");
   } else {
-    $("#game-card").addClass("bg-danger-pale", 400);
+    $("#game-card").addClass("bg-danger-pale", 800);
     $("#gameResult").text("Incorrect!");
   }
-  $("#gameResult").animate({opacity: 1}, 400);
+  $("#gameResult").animate({opacity: 1}, 800);
 }
