@@ -33,10 +33,11 @@
         $("#navbar").load('/hkdse-hub/navbar.html', () => {
           $("#navbar-subjects").addClass("active");
           $("#subject-chemistry").addClass("active");
-          $(".mask").css("display", "none");
         });
         initialize();
-        genQuestion();
+        genQuestion(function() {
+          $(".mask").css("display", "none");
+        }, true);
       });
 
       function renderKATEX() {
@@ -72,7 +73,7 @@
       <a href="../">
         <div class="card text-dark bg-light mb-3">
           <div class="card-body">
-            <h5>... Back to Cheatsheet</h5>
+            <h5>← Back to Cheatsheet</h5>
           </div>
         </div>
       </a>
