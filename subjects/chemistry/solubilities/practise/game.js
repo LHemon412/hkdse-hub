@@ -115,22 +115,33 @@ function initialize() {
   cations.push(new Ion("NH4", "ammonium", 1));
 }
 
-function genQuestion() {
-  var anion = randomElement(anions);
-  var cation = randomElement(cations);
-  var compound = new IonicCompound(cation, anion);
+function genQuestion(callback, noAnimation) {
+  var valid = false;
+  var anion, cation, compound;
+  const excludedCompounds = [
+    "AgOH", "CuOH"
+  ];
+
+  while (!valid) {
+    anion = randomElement(anions);
+    cation = randomElement(cations);
+    compound = new IonicCompound(cation, anion);
+    if (!excludedCompounds.includes(compound.getFormula())) valid = true;
+  }
 
   answer = compound.isSoluble() ? "soluble" : "insoluble";
   $("#game-card").removeClass("bg-success-pale").removeClass("bg-danger-pale").addClass("bg-light", 200);
-  $("#game-panel, #btnNext").animate({opacity: 0}, 400, function() {
+  var delay = 400;
+  if (noAnimation) delay = 100;
+  $("#game-panel, #btnNext").animate({opacity: 0}, delay, function() {
     $("#compoundFormula").text(`$$\\ce{${compound.getFormula()}}$$`);
     renderMathInElement($("#compoundFormula")[0]);
     $("#gameResult").css("opacity", 0);
     $("#btnNext").css("display", "none");
     $("#compoundName").text(compound.getName());
     $("#btnAnswer").css("display", "flex");
-    $("#btnAnswer").animate({opacity: 1}, 400);
-    $("#game-panel").animate({opacity: 1}, 400);
+    $("#btnAnswer").animate({opacity: 1}, delay);
+    $("#game-panel").animate({opacity: 1}, delay, callback);
   });
 
 
@@ -140,14 +151,17 @@ function userAnswer(ans) {
   $("#btnAnswer").css("display", "none");
   $("#btnAnswer").css("opacity", 0);
   $("#btnNext").css("display", "grid");
-  $("#btnNext").animate({opacity: 1}, 800);
+  $("#btnNext button").prop("disabled", true);
+  $("#btnNext").animate({opacity: 1}, 400, () => {
+    $("#btnNext button").prop("disabled", false);
+  });
   $("#game-card").removeClass("bg-light");
   if (answer == ans) {
-    $("#game-card").addClass("bg-success-pale", 800);
+    $("#game-card").addClass("bg-success-pale", 400);
     $("#gameResult").text("Correct!");
   } else {
-    $("#game-card").addClass("bg-danger-pale", 800);
+    $("#game-card").addClass("bg-danger-pale", 400);
     $("#gameResult").text("Incorrect!");
   }
-  $("#gameResult").animate({opacity: 1}, 800);
+  $("#gameResult").animate({opacity: 1}, 400);
 }
